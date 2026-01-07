@@ -5,7 +5,7 @@ SELECT
     -- 1. DEVELOPER TRAFFIC (The "Ghost" Filter)
     -- Logic: Matches specific Geo + Device combo AND (High Frequency OR Zero-Time testing)
     WHEN (
-       (city IN ('Brandon', 'Flowood', 'Ridgeland') AND operating_system IN ('Macintosh', 'iOS')) 
+       (city IN ('<Home_City_1>', '<Home_City_2>') AND operating_system IN ('Macintosh', 'iOS')) 
        AND (total_sessions > 5 OR avg_seconds_on_site < 5)
     ) THEN 'Developer (Self-Traffic)'
 
@@ -20,7 +20,7 @@ SELECT
     -- 4. LOCAL NETWORK (High Engagement)
     -- Logic: Local geo but HIGH engagement (>30s) -> Likely real local network, not testing
     WHEN (
-       (city IN ('Brandon', 'Flowood', 'Ridgeland') AND operating_system IN ('Macintosh', 'iOS'))
+       (city IN ('<Home_City_1>', '<Home_City_2>') AND operating_system IN ('Macintosh', 'iOS'))
        AND avg_seconds_on_site > 30
     ) THEN 'Local Visitor (Direct)'
 
